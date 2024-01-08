@@ -23,6 +23,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
+import { FileUpload } from "../file-upload";
 
 const formSchema = z.object({
   name: z.string().min(1, {
@@ -58,7 +59,7 @@ export const InitialModal = () => {
   if(!isMounted){
     return null;
   }
-  
+
   return (
     <Dialog open>
       <DialogContent className="bg-white text-black p-0 overflow-hidden">
@@ -78,7 +79,21 @@ export const InitialModal = () => {
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
             <div className="space-y-8 px-6">
               <div className="flex items-center justify-center text-center">
-                TODO: Image Upload
+                <FormField  
+                control={form.control}
+                name="imageUrl"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <FileUpload 
+                       endpoint="serverImage"
+                       value={field.value}
+                       onChange={field.onChange } 
+                      />
+                    </FormControl>
+                  </FormItem>
+                )}
+                />
               </div>
 
               <FormField
