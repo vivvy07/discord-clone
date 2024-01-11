@@ -8,8 +8,6 @@ import { UploadDropzone } from "@/lib/uploadthing";
 
 import "@uploadthing/react/styles.css";
 
-import { error } from "console";
-
 interface FileUploadProps {
     onChange: (url?: string) => void;
     value: string;
